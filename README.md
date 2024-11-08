@@ -1,0 +1,1 @@
+# qqtech7-exercises
