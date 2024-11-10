@@ -28,14 +28,14 @@ const getInventoryById = async (id) => {
   }
 };
 
-const insertInventory = async (minQtt, recomendedQtt, currentQtt, storeId) => {
+const insertInventory = async (minQtt, recomendedQtt, currentQtt, inventoryId) => {
   const query = `
-        INSERT INTO beaba_testes.Inventory (min_quantity, recomended_quantity, current_quantity, id_store)
+        INSERT INTO beaba_testes.Inventory (min_quantity, recomended_quantity, current_quantity, id_inventory)
         VALUES ($1, $2, $3, $4)
         RETURNING *;
     `;
 
-  const values = [minQtt, recomendedQtt, currentQtt, storeId];
+  const values = [minQtt, recomendedQtt, currentQtt, inventoryId];
 
   try {
     const result = await pool.query(query, values);
@@ -46,18 +46,18 @@ const insertInventory = async (minQtt, recomendedQtt, currentQtt, storeId) => {
   }
 };
 
-const updateInventory = async (id, minQtt, recomendedQtt, currentQtt, storeId) => {
+const updateInventory = async (id, minQtt, recomendedQtt, currentQtt, inventoryId) => {
   const query = `
     UPDATE beaba_testes.Inventory
       SET min_quantity = $2, 
         recomended_quantity = $3, 
         current_quantity = $4, 
-        id_store = $5
+        id_Inventory = $5
       WHERE id = $1
       RETURNING *;
   `;
 
-  const values = [id, minQtt, recomendedQtt, currentQtt, storeId];
+  const values = [id, minQtt, recomendedQtt, currentQtt, inventoryId];
 
   try {
     const result = await pool.query(query, values);
