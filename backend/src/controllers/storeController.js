@@ -4,7 +4,7 @@ const getAllStores = async (req, res) => {
   try {
     const stores = await storeModel.getAllStores();
 
-    if (stores) {
+    if (stores.length > 0) {
       res.status(200).json({ message: 'Consulta as lojas realizada com sucesso!', stores });
     } else {
       res.status(404).json({ message: 'Nenhuma loja encontrada' });
@@ -31,13 +31,12 @@ const getStoreByCode = async (req, res) => {
 };
 
 const insertStore = async (req, res) => {
-  const { code, store_name: storeName, employees_quantity: employeesQtt } = req.body;
+  const { code, storeName, employeesQtt } = req.body;
 
   try {
     const newStore = await storeModel.insertStore(code, storeName, employeesQtt);
 
-    console.log(`Loja inserida: ${newStore}`);
-    res.status(201).json({ message: 'Loja criada com sucesso!', store: newStore });
+    res.status(201).json({ message: 'Loja cadastrada com sucesso!', store: newStore });
   } catch (err) {
     res.status(500).json({ message: 'Erro ao criar loja', error: err.message });
   }
@@ -51,7 +50,6 @@ const updateStore = async (req, res) => {
     const updatedStore = await storeModel.updateStore(code, newCode, store_name, employees_quantity);
 
     if (updatedStore) {
-      console.log(`Loja atualizada: ${updatedStore}`);
       res.status(200).json({ message: 'Loja atualizada com sucesso!', store: updatedStore });
     } else {
       res.status(404).json({ message: `Loja com código ${code} não encontrada` });

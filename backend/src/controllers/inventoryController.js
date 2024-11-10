@@ -41,7 +41,7 @@ const insertInventory = async (req, res) => {
       id_store
     );
 
-    res.status(201).json({ message: 'Estoque criado com sucesso', inventory: newinventory });
+    res.status(201).json({ message: 'Estoque cadastrado com sucesso', inventory: newinventory });
   } catch (err) {
     res.status(500).json({ message: 'Erro ao cadastrar estoque', error: err.message });
   }

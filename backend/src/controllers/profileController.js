@@ -4,7 +4,11 @@ const getAllProfiles = async (req, res) => {
   try {
     const profiles = await profileModel.getAllProfiles();
 
-    res.status(200).json({ message: 'Consulta aos perfis realizada com sucesso!', profiles });
+    if (profiles.length > 0) {
+      res.status(200).json({ message: 'Consulta aos perfis realizada com sucesso!', profiles });
+    } else {
+      res.status(404).json({ message: 'Nenhum perfil encontrado' });
+    }
   } catch (err) {
     res.status(500).json({ message: 'Erro ao consultar usuários', error: err.message });
   }
@@ -30,7 +34,7 @@ const insertProfile = async (req, res) => {
   try {
     const newProfile = await profileModel.insertProfile(profile_name);
 
-    res.status(200).json({ message: 'Perfil criado com sucesso!', profile: newProfile });
+    res.status(200).json({ message: 'Perfil cadastrado com sucesso!', profile: newProfile });
   } catch (err) {
     res.status(500).json({ message: 'Erro ao criar perfil', error: err.message });
   }
