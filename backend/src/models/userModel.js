@@ -44,7 +44,7 @@ const insertUser = async (name, registration, email, password, storeId, profileI
     const result = await pool.query(query, values);
     return result.rows[0];
   } catch (err) {
-    console.error('Erro ao criar usuário', err);
+    console.error('Erro ao registrar usuário', err);
     throw err;
   }
 };

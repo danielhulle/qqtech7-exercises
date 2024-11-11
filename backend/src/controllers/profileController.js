@@ -34,7 +34,7 @@ const insertProfile = async (req, res) => {
   try {
     const newProfile = await profileModel.insertProfile(profile_name);
 
-    res.status(200).json({ message: 'Perfil cadastrado com sucesso!', profile: newProfile });
+    res.status(200).json({ message: 'Perfil registrado com sucesso!', profile: newProfile });
   } catch (err) {
     res.status(500).json({ message: 'Erro ao criar perfil', error: err.message });
   }

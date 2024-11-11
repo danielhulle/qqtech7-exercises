@@ -35,7 +35,7 @@ const insertUser = async (req, res) => {
   try {
     const newUser = await userModel.insertUser(name, registration, email, password, id_store, id_profile);
 
-    res.status(201).json({ message: 'Usuário cadastrado com sucesso', user: newUser });
+    res.status(201).json({ message: 'Usuário registrado com sucesso', user: newUser });
   } catch (err) {
     res.status(500).json({ message: 'Erro ao cadastrar usuário', error: err.message });
   }

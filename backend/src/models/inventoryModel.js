@@ -41,7 +41,7 @@ const insertInventory = async (minQtt, recomendedQtt, currentQtt, inventoryId) =
     const result = await pool.query(query, values);
     return result.rows[0];
   } catch (err) {
-    console.error('Erro ao inserir estoque', err);
+    console.error('Erro ao registrar estoque', err);
     throw err;
   }
 };

@@ -36,7 +36,7 @@ const insertStore = async (req, res) => {
   try {
     const newStore = await storeModel.insertStore(code, storeName, employeesQtt);
 
-    res.status(201).json({ message: 'Loja cadastrada com sucesso!', store: newStore });
+    res.status(201).json({ message: 'Loja registrada com sucesso!', store: newStore });
   } catch (err) {
     res.status(500).json({ message: 'Erro ao criar loja', error: err.message });
   }

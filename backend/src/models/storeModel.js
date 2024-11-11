@@ -40,7 +40,7 @@ const insertStore = async (code, storeName, employeesQtt) => {
     const result = await pool.query(query, values);
     return result.rows[0];
   } catch (err) {
-    console.error('Erro ao inserir loja', err);
+    console.error('Erro ao registrar loja', err);
     throw err;
   }
 };
